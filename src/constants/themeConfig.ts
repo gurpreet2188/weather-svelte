@@ -1,0 +1,10 @@
+export enum ICONS  {
+    SIZESM = 18,
+    SIZE_DEFAULT_MOBILE = 24,
+    SIZE_DEFAULT_DESKTOP = 32,
+    SIZEXL = 64,
+    SIZE2XL = 128,
+    COLOR_LIGHT= '#778da9',
+    COLOR_LIGHT_WEATHER= '#415a77',
+    COLOR_LIGHT_GRAPH = '',
+}

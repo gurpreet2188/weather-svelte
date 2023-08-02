@@ -1,0 +1,43 @@
+{
+  "coord": {
+    "lon": 103.8644,
+    "lat": 1.4082
+  },
+  "weather": [
+    {
+      "id": 803,
+      "main": "Clouds",
+      "description": "broken clouds",
+      "icon": "04d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 29.99,
+    "feels_like": 36.81,
+    "temp_min": 29.52,
+    "temp_max": 30.15,
+    "pressure": 1012,
+    "humidity": 77
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 4.12,
+    "deg": 130
+  },
+  "clouds": {
+    "all": 75
+  },
+  "dt": 1689992140,
+  "sys": {
+    "type": 1,
+    "id": 9479,
+    "country": "SG",
+    "sunrise": 1689980708,
+    "sunset": 1690024585
+  },
+  "timezone": 28800,
+  "id": 1880294,
+  "name": "Seletar",
+  "cod": 200
+}
