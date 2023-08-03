@@ -9,6 +9,9 @@
 	src: local('penna'), url('/fonts/penna.otf');
 }
 
+/* * {
+	border:1px solid red;
+} */
 body,
 html {
 	height: 100%;

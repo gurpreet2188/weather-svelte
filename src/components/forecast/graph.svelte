@@ -53,7 +53,7 @@
 </script>
 
 <!-- {#if transitionForecastComponent} -->
-<div class="h-[50%] w-[100vw] lg:w-[100%] landscape:w-[100%]" bind:clientHeight={height} bind:clientWidth={width}>
+<div class="h-[50%] sm:landscape:h-[50%] md:landscape:h-[65%] w-[100vw] lg:w-[100%] landscape:w-[100%]" bind:clientHeight={height} bind:clientWidth={width}>
 	<!-- {#if height && width}  -->
 	<svg width="{width && width}px" height="{height && height}px" viewBox="0, 0, {width && width}, {height && height}">
 		$: {#if $transition}
@@ -96,7 +96,7 @@
 				{/each}
 			{/if}
 			$:{#if height && width && $forecastWeatherGraphProps}
-				{console.log($forecastWeatherGraphProps.xyAxis)}
+				<!-- {console.log($forecastWeatherGraphProps.xyAxis)} -->
 				<polygon
 					fill="#778da9"
 					fill-opacity='0.2'

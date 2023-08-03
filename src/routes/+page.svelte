@@ -52,17 +52,19 @@
 	});
 
 	$: console.log($locationPos, resetWeatherData, checkSesssionstorage);
+
+	
 </script>
 
 {#if $currentWeather}
 	<div
-		class="flex sm:landscape:contents md:flex landscape:px-1 lg:landscape:flex lg:landscape:px-[10rem] flex-col justify-center items-center gap-[1rem] bg-[#e0e1dd] h-[100%] py-[1rem] lg:p-[10rem] lg:flex-row lg:border lg:border-black/50"
+		class="flex md:flex landscape:px-1 lg:landscape:flex lg:landscape:px-[10rem] flex-col justify-between items-center gap-[1rem] bg-[#e0e1dd] h-[100%] py-[1rem] lg:landscape:p-[10rem] lg:landscape:flex-row lg:landscape:border lg:landscape:border-black/50"
 	>
 		<div
-			class="landscape:m-auto landscape:flex flex-col lg:flex gap-[2rem] lg:border lg:border-black/50 lg:w-[70rem] lg:landscape:w-[70rem] landscape:w-[45rem] landscape:px-1 lg:landscape:p-[1rem] lg:p-[4rem]"
+			class="landscape:m-auto flex flex-col justify-between h-[100%] lg:landscape::border lg:landscape::border-black/50 lg:w-[70rem] lg:landscape:w-[70rem] landscape:w-[45rem] landscape:px-1 lg:landscape:p-[1rem] lg:p-[4rem]"
 		>
 			<Location />
-			<div class="flex lg:flex-row flex-col justify-center items-center gap-[2rem] w-[100%] h-[90%]">
+			<div class="flex lg:flex-row landscape:flex-row flex-col justify-between items-center gap-[2rem] w-[100%] h-[90%] landscape:h-[100%]">
 				<CurrentWeatherCondition />
 				<ForecastWeather />
 			</div>

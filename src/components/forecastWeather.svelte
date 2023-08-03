@@ -64,7 +64,7 @@
 		{/if}
 </div> -->
 
-<div class="flex flex-col justify-between items-center gap-[1rem]  w-[100vw] h-[100%] md:contents landscape:flex landscape:w-[50%] lg:flex lg:gap-[2rem] lg:w-[50%]">
+<div class="flex flex-col justify-between items-center gap-[1rem]  w-[100vw] h-[100%]  landscape:w-[50%] lg:flex lg:gap-[2rem] lg:w-[50%]">
 	{#if $snowRainIcon}
 	<div class="flex justify-between items-center w-[100%] h-[25%] px-[2rem]">
 		<HourlyDailyIcons />

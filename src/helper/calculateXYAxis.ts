@@ -1,5 +1,5 @@
 import { forecastWeatherGraphProps } from "../stores/forecastData";
-export const calcXYAxis = (valsArr:number[], height:number, width:number,) => {
+export const calcXYAxis = (valsArr:Array<number>, height:number, width:number,) => {
     let yAxis: number[]
     const h = height - height * 0.25;
     let maxVal = Math.max(...valsArr);
@@ -15,5 +15,5 @@ export const calcXYAxis = (valsArr:number[], height:number, width:number,) => {
     const xAxis:number[] = valsArr.map((v: number, i: number) => xDelta * i);
     const xyAxis = xAxis.map((v: number, i: number) => v + ',' + yAxis[i]).join(' ');
     forecastWeatherGraphProps.set({xAxis:xAxis,yAxis:yAxis,xyAxis:xyAxis})
-    
+
 };
