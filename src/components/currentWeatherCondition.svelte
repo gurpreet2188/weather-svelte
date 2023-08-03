@@ -11,14 +11,14 @@
 
 {#if $currentWeather}
 	<div
-		class="flex flex-col justify-center items-center gap-[1rem] p-8 rounded-lg bg-[#778da9] border-[0.1rem] border-[#778da9] w-[70%] lg:landscape::w-[50%] landscape:w-[50%] h-[50%] lg:h-[100%] landscape:h-[100%]"
+		class="flex flex-col justify-center items-center gap-[1rem] lg:gap-[4rem] p-8 rounded-lg bg-[#778da9] border-[0.1rem] border-[#778da9] w-[70%] lg:landscape::w-[50%] landscape:w-[50%] h-[50%] lg:h-[100%] landscape:h-[100%]"
 	>
 		<div>
-			<h2 class="capitalize text-center text-4xl text-[#e0e1dd]/80 font-bold leading-[1rem]">
+			<h2 class="capitalize text-center text-4xl lg:text-[6xl] text-[#e0e1dd]/80 font-bold leading-[1rem]">
 				{$currentWeather.weather[0].description}
 			</h2>
 		</div>
-		<div class="flex flex-col justify-center items-center landscape:flex-row landscape:gap-[1rem]">
+		<div class="flex flex-col justify-center items-center landscape:flex-row landscape:gap-[1rem] lg:landscape:gap-[4rem]">
 			<WeatherIcon weatherID={$currentWeather.weather[0].id} size={128} color={'#e0e1dd'} />
 
 			<div class="flex flex-row justify-center items-center top-[12rem]">
@@ -26,7 +26,7 @@
 					<div class="flex flex-col justify-center items-center">
 						<div class="relative flex flex-col justify-center items-center">
 							<div class="absolute top-[0rem] bottom-auto opacity-50">
-								<ChevronUp color={iconColor} size={iconSize} />
+								<ChevronUp color={'#e0e1dd'} size={iconSize} />
 							</div>
 							<p class="text-4xl text-[#e0e1dd]/70 font-bold">
 								{$currentWeather.main.temp_max.toFixed()}
@@ -37,7 +37,7 @@
 								{$currentWeather.main.temp_min.toFixed()}
 							</p>
 							<div class="absolute bottom-[-0.7rem] top-auto opacity-50">
-								<ChevronDown color={iconColor} size={iconSize} />
+								<ChevronDown color={'#e0e1dd'} size={iconSize} />
 							</div>
 						</div>
 					</div>

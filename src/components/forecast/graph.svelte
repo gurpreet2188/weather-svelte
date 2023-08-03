@@ -32,31 +32,22 @@
 	const unixToTime = (time: number) => {
 		const date = new Date(time * 1000);
 		const hours = date.getHours();
-		// const mins = date.getMinutes()
+		
 		const day = date.getDay();
 		const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-		// console.log(day);
 		if ($forecastWeatherHourlyDaily === HOURLY_DAILY.HOURLY) {
 			return `${hours >= 13 ? hours - 12 : hours === 0 ? 12 : hours}${hours >= 12 ? ' pm' : ' am'}`;
 		} else {
 			return days[day];
 		}
 	};
-
-	let transitionForecastComponent = false;
-
-	setTimeout(() => {
-		transitionForecastComponent = true;
-	}, 1);
-
-	console.log($transition);
 </script>
 
-<!-- {#if transitionForecastComponent} -->
+
 <div class="h-[50%] sm:landscape:h-[50%] md:landscape:h-[65%] w-[100vw] lg:w-[100%] landscape:w-[100%]" bind:clientHeight={height} bind:clientWidth={width}>
-	<!-- {#if height && width}  -->
-	<svg width="{width && width}px" height="{height && height}px" viewBox="0, 0, {width && width}, {height && height}">
-		$: {#if $transition}
+
+	<svg width="{width ? width: 0}px" height="{height ? height:0}px" viewBox="0, 0, {width ? width: 0}, {height ? height:0}">
+		{#if $transition && height && width}
 		<g style="transform: translate({width - width * 0.91}px,0);" in:fade out:fade>
 			$:{#if $forecastWeatherArr && $forecastWeatherValueArr && $forecastWeatherGraphProps}
 				{#each $forecastWeatherGraphProps.xAxis as x, i}
@@ -95,20 +86,22 @@
 					<!-- <circle cx={x} cy={$forecastWeatherGraphProps.yAxis[i]} r="2" fill={weatherIconColor} /> -->
 				{/each}
 			{/if}
-			$:{#if height && width && $forecastWeatherGraphProps}
-				<!-- {console.log($forecastWeatherGraphProps.xyAxis)} -->
+			$:{#if $forecastWeatherGraphProps && $transition}
+
 				<polygon
 					fill="#778da9"
-					fill-opacity='0.2'
+					fill-opacity='0.1'
+					stroke-opacity='0.3'
 					stroke={weatherIconColor}
 					stroke-width={'1px'}
+					transition:draw={{delay:2000, duration:1000}}
 					opacity="1"
-					points='{0},{ height - height * 0.25} {$forecastWeatherGraphProps.xyAxis} {$forecastWeatherGraphProps.xAxis[$forecastWeatherGraphProps.xAxis.length - 1]},{height - height * 0.25}'
+					points='{0},{height - height * 0.25} {$forecastWeatherGraphProps.xyAxis} {$forecastWeatherGraphProps.xAxis[$forecastWeatherGraphProps.xAxis.length - 1]},{height - height * 0.25}'
 				/>
 			{/if}
 		</g>
 		{/if}
 	</svg>
-<!-- {/if} -->
+
 </div>
-<!-- {/if} -->
+

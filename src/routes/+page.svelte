@@ -9,6 +9,7 @@
 	import Welcome from '../components/welcome.svelte';
 	import { getLocation, getLocationPermissionStatus } from '../helper/location';
 	import Loading from '../components/loading.svelte';
+	import { fly } from 'svelte/transition';
 
 	let checkSesssionstorage: boolean = false;
 	let resetWeatherData: boolean;
@@ -51,17 +52,16 @@
 		}
 	});
 
-	$: console.log($locationPos, resetWeatherData, checkSesssionstorage);
-
 	
 </script>
 
 {#if $currentWeather}
 	<div
-		class="flex md:flex landscape:px-1 lg:landscape:flex lg:landscape:px-[10rem] flex-col justify-between items-center gap-[1rem] bg-[#e0e1dd] h-[100%] py-[1rem] lg:landscape:p-[10rem] lg:landscape:flex-row lg:landscape:border lg:landscape:border-black/50"
+		 class="flex md:flex landscape:px-1 lg:landscape:flex flex-col justify-between items-center gap-[1rem] bg-[#e0e1dd] h-[100%] lg:landscape:flex-row lg:landscape:border lg:landscape:border-black/50"
 	>
 		<div
-			class="landscape:m-auto flex flex-col justify-between h-[100%] lg:landscape::border lg:landscape::border-black/50 lg:w-[70rem] lg:landscape:w-[70rem] landscape:w-[45rem] landscape:px-1 lg:landscape:p-[1rem] lg:p-[4rem]"
+		in:fly={{duration:1000,y:'100px'}}	
+		class="landscape:m-auto flex flex-col justify-between lg:landscape:h-[70%] h-[100%] lg:landscape:border lg:landscape::border-black/50 lg:w-[70rem] lg:landscape:w-[60rem] landscape:px-1 lg:landscape:p-[1rem] lg:p-[4rem]"
 		>
 			<Location />
 			<div class="flex lg:flex-row landscape:flex-row flex-col justify-between items-center gap-[2rem] w-[100%] h-[90%] landscape:h-[100%]">
@@ -69,16 +69,11 @@
 				<ForecastWeather />
 			</div>
 		</div>
-		<!-- <div
-			class="lg:hidden flex flex-col justify-center items-center gap-[1rem] md:gap-[2rem] landscape:hidden h-[100%]"
-		>
-			<Location />
-			<CurrentWeatherCondition />
-			<ForecastWeather />
-		</div> -->
 	</div>
 {:else if $locationPermissionState === 'prompt' || $locationPermissionState ==='denied'}
-	<Welcome />
+	<div out:fly={{duration:300, y:'-100px'}}>
+		<Welcome />
+	</div>
 {:else if $locationPermissionState === 'granted'}
 <Loading/>
 {:else}
