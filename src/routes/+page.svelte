@@ -61,7 +61,7 @@
 	>
 		<div
 		in:fly={{duration:1000,y:'100px'}}	
-		class="landscape:m-auto flex flex-col justify-between lg:landscape:h-[70%] h-[100%] lg:landscape:border lg:landscape::border-black/50 lg:w-[70rem] lg:landscape:w-[60rem] landscape:px-1 lg:landscape:p-[1rem] lg:p-[4rem]"
+		class="landscape:m-auto flex flex-col justify-between lg:landscape:h-[70%] h-[100dvh] lg:landscape:border lg:landscape::border-black/50 lg:w-[70rem] lg:landscape:w-[60rem] w-[100vw] landscape:px-1 lg:landscape:p-[1rem] lg:p-[4rem]"
 		>
 			<Location />
 			<div class="flex lg:flex-row landscape:flex-row flex-col justify-between items-center gap-[2rem] w-[100%] h-[90%] landscape:h-[100%]">
