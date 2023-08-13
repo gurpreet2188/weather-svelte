@@ -1,10 +1,11 @@
 import { browser } from "$app/environment"
 
 
-export const getLocation = async ():Promise<GeolocationPosition | null> => {
+export const getLocation = async ():Promise<GeolocationPosition | null | string> => {
     if (browser) {
         if (navigator.geolocation) {
             const permission = await getLocationPermissionStatus() as PermissionState
+            console.log(permission)
             if (permission) {
                 if (permission === 'prompt' || permission === 'granted') {
                     try {
@@ -16,10 +17,13 @@ export const getLocation = async ():Promise<GeolocationPosition | null> => {
                         // })
                         // return pos
                     } catch (e) {
-                        return null
+                        console.log(e)
+                        return 'denied'
                     }
+                }else {
+                    return 'denied'
                 }
-            }
+            } 
 
         }
 

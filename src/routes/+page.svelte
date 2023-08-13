@@ -11,13 +11,13 @@
 	import Loading from '../components/loading.svelte';
 	import { fly } from 'svelte/transition';
 
-	let checkSesssionstorage: boolean = false;
-	let resetWeatherData: boolean;
+	// let checkSesssionstorage: boolean = false;
+	// let resetWeatherData: boolean;
 
 	getLocationPermissionStatus().then((d) => locationPermissionState.set(d as string));
 	$: if ($locationPermissionState === 'granted') {
 		getLocation().then(
-			(pos) => pos && locationPos.set({ lat: pos.coords.latitude, lon: pos.coords.longitude })
+			(pos) => (pos && typeof pos !== 'string') && locationPos.set({ lat: pos.coords.latitude, lon: pos.coords.longitude })
 		);
 	}
 
@@ -51,33 +51,33 @@
 			}
 		}
 	});
-
-	
 </script>
 
 {#if $currentWeather}
 	<div
-		 class="flex md:flex landscape:px-1 lg:landscape:flex flex-col justify-between items-center gap-[1rem] bg-[#e0e1dd] h-[100%] lg:landscape:flex-row lg:landscape:border lg:landscape:border-black/50"
+		class="flex md:flex landscape:px-1 lg:landscape:flex flex-col justify-between items-center gap-[1rem] h-[100%] lg:landscape:flex-row lg:landscape:border lg:landscape:border-black/0 overflow-hidden"
 	>
 		<div
-		in:fly={{duration:1000,y:'100px'}}	
-		class="landscape:m-auto flex flex-col justify-between lg:landscape:h-[70%] h-[100dvh] lg:landscape:border lg:landscape::border-black/50 lg:w-[70rem] lg:landscape:w-[60rem] w-[100vw] landscape:px-1 lg:landscape:p-[1rem] lg:p-[4rem]"
+			in:fly={{ duration: 1000, y: '100px' }}
+			class="landscape:m-auto flex flex-col justify-between lg:landscape:h-[70%] h-[100dvh] lg:landscape:border lg:landscape::border-black/50 lg:w-[70rem] lg:landscape:w-[60rem] w-[100vw] landscape:px-1 lg:landscape:p-[1rem] lg:p-[4rem]"
 		>
 			<Location />
-			<div class="flex lg:flex-row landscape:flex-row flex-col justify-between items-center gap-[2rem] w-[100%] h-[90%] landscape:h-[100%]">
+			<div
+				class="flex lg:flex-row landscape:flex-row flex-col justify-between items-center gap-[2rem] w-[100%] h-[90%] landscape:h-[100%]"
+			>
 				<CurrentWeatherCondition />
 				<ForecastWeather />
 			</div>
 		</div>
 	</div>
-{:else if $locationPermissionState === 'prompt' || $locationPermissionState ==='denied'}
-	<div out:fly={{duration:300, y:'-100px'}}>
+{:else if $locationPermissionState === 'prompt' || $locationPermissionState === 'denied'}
+	<div out:fly={{ duration: 300, y: '-100px' }} class="flex flex-col justify-center items-center">
 		<Welcome />
 	</div>
 {:else if $locationPermissionState === 'granted'}
-<Loading/>
+	<Loading />
 {:else}
-	<Loading/>
+	<Loading />
 {/if}
 
 <style>
