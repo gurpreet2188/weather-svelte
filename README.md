@@ -1,38 +1,11 @@
-# create-svelte
+# Weather Web App Built with SvelteKit
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+A Simple Web App built with Sveltekit and data from OpenWeather. The App features hourly forcast for 6 hours and daily forcast for 6 days. 
 
-## Creating a project
+## Live Preview
+[Host On Vercel](https://weather-svelte-green.vercel.app/)
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Screenshot
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+<img loading="lazy" width="80%" src="./sitePreview.png" />
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.

@@ -13,7 +13,7 @@
 
 	// let checkSesssionstorage: boolean = false;
 	// let resetWeatherData: boolean;
-
+ 
 	getLocationPermissionStatus().then((d) => locationPermissionState.set(d as string));
 	$: if ($locationPermissionState === 'granted') {
 		getLocation().then(
